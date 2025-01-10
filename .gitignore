@@ -1,0 +1,10 @@
+*
+
+!.gitignore
+!*.py
+!*.cpp
+!*.h
+!CMakeLists.txt
+!package/
+!package/pybind_sandbox
+!test/
