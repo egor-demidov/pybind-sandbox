@@ -9,6 +9,24 @@ on:
     branches: [main]
 
 jobs:
+
+  Compile-Linux:
+    runs-on: linux-latest
+    container: quay.io/pypa/manylinux_2_34_x86_64
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Build
+        continue-on-error: true
+        env:
+          PYPI_KEY: ${{ secrets.PYPI_KEY }}
+        run: |
+          ls /opt/python
+
   Compile-Windows:
     runs-on: windows-latest
     strategy:
