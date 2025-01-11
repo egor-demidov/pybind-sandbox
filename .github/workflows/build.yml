@@ -23,6 +23,8 @@ jobs:
           cmake -B build -S .
           cmake --build build
           cmake --install build
+          $env:Path += ";C:/Program Files (x86)/pybind11/share/cmake/pybind11/"
+          cd ..
           choco install python313
           C:\ProgramData\chocolatey\bin\python3.13.exe -m venv .py313-env
           .py313-env\Scripts\activate
