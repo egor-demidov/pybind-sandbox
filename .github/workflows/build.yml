@@ -29,6 +29,18 @@ jobs:
       - name: Build
         run: |
           python --version
+          git clone https://github.com/pybind/pybind11.git
+          cd pybind11
+          cmake -B build -S .
+          cmake --build build
+          cmake --install build
+          $env:Path += ";C:/Program Files (x86)/pybind11/share/cmake/pybind11/"
+          cd ..
+          cd package
+          python -m venv .venv
+          .venv\Scripts\activate
+          pip install build
+          python -m build
 
       # - name: Archive compiled artifact
       #   uses: actions/upload-artifact@v3
