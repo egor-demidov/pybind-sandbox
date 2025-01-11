@@ -11,7 +11,7 @@ on:
 jobs:
 
   Compile-Linux:
-    runs-on: linux-latest
+    runs-on: ubuntu-latest
     container: quay.io/pypa/manylinux_2_34_x86_64
 
     steps:
