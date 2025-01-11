@@ -47,7 +47,7 @@ jobs:
           pip3 install twine auditwheel
           for wheel in ./package/dist/*.whl; do
           auditwheel show $wheel
-          auditwheel repair $wheel --plat manylinux_2_27_x86_64
+          auditwheel repair $wheel --plat manylinux_2_34_x86_64
           rm $wheel
           done
           echo "[pypi]" >> ~/.pypirc
@@ -81,7 +81,7 @@ jobs:
   #         python --version
   #         git clone https://github.com/pybind/pybind11.git
   #         cd pybind11
-  #         cmake -B build -S .
+  #         cmake -B build -S . -DPYBIND11_TEST=Off
   #         cmake --build build
   #         cmake --install build
   #         $env:Path += ";C:/Program Files (x86)/pybind11/share/cmake/pybind11/"
