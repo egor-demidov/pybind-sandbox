@@ -33,10 +33,10 @@ jobs:
           PYPI_KEY: ${{ secrets.PYPI_KEY }}
         run: |
           python3 --version
-          sudo apt install cmake ninja-build -y
+          sudo apt install cmake ninja-build patchelf -y
           git clone https://github.com/pybind/pybind11.git
           cd pybind11
-          cmake -B build -S . -G Ninja
+          cmake -B build -S . -G Ninja -DPYBIND11_TEST=Off
           cmake --build build
           sudo cmake --install build
           cd ..
