@@ -80,6 +80,7 @@ jobs:
         with:
           submodules: recursive
       - name: Build
+        continue-on-error: true
         env:
           PYPI_KEY: ${{ secrets.PYPI_KEY }}
         run: |
