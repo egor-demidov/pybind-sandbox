@@ -38,6 +38,12 @@ jobs:
           source .venv/bin/activate
           pip3 install build
           ./build.sh
+          pip3 install twine auditwheel
+          for wheel in ./package/dist/*.whl; do
+          auditwheel show $wheel
+          auditwheel repair $wheel
+          done
+          
 
   # Compile-Windows:
   #   runs-on: windows-latest
