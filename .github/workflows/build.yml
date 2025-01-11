@@ -25,6 +25,7 @@ jobs:
         env:
           PYPI_KEY: ${{ secrets.PYPI_KEY }}
         run: |
+          yum install pybind11-devel
           /opt/python/cp310-cp310/bin/python3 -m venv .py310-env
           source .py310-env/bin/activate
           pip3 install build
