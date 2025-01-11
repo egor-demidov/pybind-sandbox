@@ -48,12 +48,11 @@ jobs:
           for wheel in ./package/dist/*.whl; do
           auditwheel show $wheel
           auditwheel repair $wheel --plat manylinux_2_34_x86_64
-          rm $wheel
           done
           echo "[pypi]" >> ~/.pypirc
           echo "  username: __token__" >> ~/.pypirc
           echo "  password: $PYPI_KEY" >> ~/.pypirc
-          python3 -m twine upload --repository pypi package/dist/*.whl
+          python3 -m twine upload --repository pypi /home/runner/work/pybind-sandbox/pybind-sandbox/wheelhouse/*.whl
   
 
   # Compile-Windows:
