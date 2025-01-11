@@ -51,7 +51,7 @@ jobs:
           ls
           cd dist
           ls
-          python -m twine upload --repository pypi dist\.tmp-*\*.whl
+          python -m twine upload --repository pypi dist\*.whl
 
       # - name: Archive compiled artifact
       #   uses: actions/upload-artifact@v3
