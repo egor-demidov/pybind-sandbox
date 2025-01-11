@@ -11,55 +11,31 @@ on:
 jobs:
   Compile-Windows:
     runs-on: windows-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           submodules: recursive
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
       - name: Build
         run: |
-          Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
-          git clone https://github.com/pybind/pybind11.git
-          cd pybind11
-          cmake -B build -S .
-          cmake --build build
-          cmake --install build
-          $env:Path += ";C:/Program Files (x86)/pybind11/share/cmake/pybind11/"
-          cd ..
-          cd package
-          choco install python313
-          refreshenv
-          C:\ProgramData\chocolatey\bin\python3.13.exe -m venv .py313-env
-          .py313-env\Scripts\activate
-          pip install build
-          python -m build
-          choco uninstall python313
-          choco install python312
-          refreshenv
-          C:\ProgramData\chocolatey\bin\python3.12.exe -m venv .py312-env
-          .py312-env\Scripts\activate
-          pip install build
-          python -m build
-          choco uninstall python312
-          # C:\ProgramData\chocolatey\bin\python3.11.exe -m venv .py311-env
-          # .py311-env\Scripts\activate
-          # pip install build pybind11
-          # python -m build
-          # C:\ProgramData\chocolatey\bin\python3.10.exe -m venv .py310-env
-          # .py310-env\Scripts\activate
-          # pip install build pybind11
-          # python -m build
-          # C:\ProgramData\chocolatey\bin\python3.9.exe -m venv .py39-env
-          # .py39-env\Scripts\activate
-          # pip install build pybind11
-          # python -m build
+          python --version
 
-      - name: Archive compiled artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: windows-x86_64
-          path: |
-            package/dist
+      # - name: Archive compiled artifact
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: windows-x86_64
+      #     path: |
+      #       package/dist
 
   Compile-MacOS:
     runs-on: macos-14
