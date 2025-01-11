@@ -31,7 +31,7 @@ jobs:
           .py313-env\Scripts\activate
           pip install build pybind11
           python -m build
-          C:\ProgramData\chocolatey\bin\python3.12.exe -m venv .py312-env
+          C:\hostedtoolcache\windows\Python\3.12.8\x64\python3.12.exe -m venv .py312-env
           .py312-env\Scripts\activate
           pip install build pybind11
           python -m build
