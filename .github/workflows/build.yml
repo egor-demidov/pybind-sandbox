@@ -48,6 +48,8 @@ jobs:
           echo "[pypi]" >> ~/.pypirc
           echo "  username: __token__" >> ~/.pypirc
           echo "  password: $PYPI_KEY" >> ~/.pypirc
+          cd dist
+          ls
           python -m twine upload --repository pypi dist\.tmp-*\*.whl
 
       # - name: Archive compiled artifact
