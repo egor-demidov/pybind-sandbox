@@ -19,7 +19,7 @@ jobs:
       - name: Build
         run: |
           choco install python313
-          python313 --version
+          C:\ProgramData\chocolatey\bin\python3.13.exe --version
 
       - name: Archive compiled artifact
         uses: actions/upload-artifact@v3
