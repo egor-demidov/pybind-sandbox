@@ -18,7 +18,8 @@ jobs:
           submodules: recursive
       - name: Build
         run: |
-          choco install python3.13
+          choco install python313
+          python313 --version
 
       - name: Archive compiled artifact
         uses: actions/upload-artifact@v3
