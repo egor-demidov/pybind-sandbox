@@ -10,7 +10,7 @@ void process_array(pybind11::array_t<double> arr) {
     pybind11::buffer_info buf_info = arr.request(true);
     double *ptr = static_cast<double *>(buf_info.ptr);
 
-    for (ssize_t i = 0; i < buf_info.size; ++i) {
+    for (size_t i = 0; i < buf_info.size; ++i) {
         std::cout << ptr[i] << " ";
     }
     std::cout << std::endl;
