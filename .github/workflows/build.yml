@@ -20,9 +20,10 @@ jobs:
         run: |
           choco install python313
           C:\ProgramData\chocolatey\bin\python3.13.exe -m venv .py313-env
-          ls
           .py313-env\Scripts\activate
-          python --version
+          pip install pybind11
+          cd package
+          python -m build
 
       - name: Archive compiled artifact
         uses: actions/upload-artifact@v3
