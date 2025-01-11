@@ -3,7 +3,6 @@ import re
 import subprocess
 import sys
 from pathlib import Path
-import sysconfig
 
 from setuptools import Extension, find_packages, setup
 from setuptools.command.build_ext import build_ext
@@ -27,9 +26,7 @@ class CMakeBuild(build_ext):
         cmake_args = [
             f"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={extdir}",
             "-DCMAKE_OSX_ARCHITECTURES=arm64;x86_64",
-            f"-DPYTHON_EXECUTABLE={sys.executable}",
-            f"-DPYTHON_INCLUDE_DIR={sysconfig.get_path('include')}",
-            f"-DPYTHON_LIBRARY={sysconfig.get_config_var('LIBDIR')}"
+            f"-DPYTHON_EXECUTABLE={sys.executable}"
         ]
 
         subprocess.check_call(["cmake", ext.sourcedir] + cmake_args, cwd=build_temp)
