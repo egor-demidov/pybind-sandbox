@@ -25,6 +25,7 @@ class CMakeBuild(build_ext):
 
         cmake_args = [
             f"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={extdir}",
+            "-DCMAKE_OSX_ARCHITECTURES=arm64;x86_64",
             f"-DPYTHON_EXECUTABLE={sys.executable}"
         ]
 
