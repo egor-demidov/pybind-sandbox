@@ -25,7 +25,7 @@ jobs:
         env:
           PYPI_KEY: ${{ secrets.PYPI_KEY }}
         run: |
-          ls /opt/python
+          ls /opt/python/cp310-cp310
 
   # Compile-Windows:
   #   runs-on: windows-latest
