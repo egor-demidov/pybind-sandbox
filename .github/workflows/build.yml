@@ -9,6 +9,24 @@ on:
     branches: [main]
 
 jobs:
+  Compile-Windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Build
+        run: |
+          choco install python3.13
+
+      - name: Archive compiled artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-x86_64
+          path: |
+            dist
+
   Compile-MacOS:
     runs-on: macos-14
     steps:
