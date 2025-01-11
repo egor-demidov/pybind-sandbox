@@ -51,6 +51,10 @@ jobs:
 
   Compile-MacOS:
     runs-on: macos-14
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -58,31 +62,15 @@ jobs:
           submodules: recursive
       - name: Build
         run: |
-          brew install cmake pybind11 python@3.13 python@3.12 python@3.11 python@3.10 python@3.9
-          python3.13 -m venv .py313-env
-          python3.12 -m venv .py312-env
-          python3.11 -m venv .py311-env
-          python3.10 -m venv .py310-env
-          python3.9 -m venv .py39-env
-          source .py313-env/bin/activate
-          pip3 install build
-          ./build.sh
-          source .py312-env/bin/activate
-          pip3 install build
-          ./build.sh
-          source .py311-env/bin/activate
-          pip3 install build
-          ./build.sh
-          source .py310-env/bin/activate
-          pip3 install build
-          ./build.sh
-          source .py39-env/bin/activate
+          brew install cmake pybind11
+          python3 -m venv .venv
+          source .venv/bin/activate
           pip3 install build
           ./build.sh
 
-      - name: Archive compiled artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: macos-arm64
-          path: |
-            package/dist
+      # - name: Archive compiled artifact
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: macos-arm64
+      #     path: |
+      #       package/dist
