@@ -20,6 +20,7 @@ jobs:
         run: |
           choco install python313
           C:\ProgramData\chocolatey\bin\python3.13.exe -m venv .py313-env
+          ls
           .py313-env\bin\activate
           python3 --version
 
