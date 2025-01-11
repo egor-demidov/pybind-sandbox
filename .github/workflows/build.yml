@@ -19,6 +19,7 @@ jobs:
       - name: Build
         run: |
           choco install python312
+          Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
           refreshenv
           C:\ProgramData\chocolatey\bin\python3.12.exe -m venv .py312-env
           python --version
