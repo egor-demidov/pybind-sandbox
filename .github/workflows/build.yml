@@ -18,38 +18,39 @@ jobs:
           submodules: recursive
       - name: Build
         run: |
-          git clone https://github.com/pybind/pybind11.git
-          cd pybind11
-          cmake -B build -S .
-          cmake --build build
-          cmake --install build
-          $env:Path += ";C:/Program Files (x86)/pybind11/share/cmake/pybind11/"
-          cd ..
-          cd package
+          winget install -e --id Python.Python.3.11
+          # git clone https://github.com/pybind/pybind11.git
+          # cd pybind11
+          # cmake -B build -S .
+          # cmake --build build
+          # cmake --install build
+          # $env:Path += ";C:/Program Files (x86)/pybind11/share/cmake/pybind11/"
+          # cd ..
+          # cd package
           # choco install python313
           # C:\ProgramData\chocolatey\bin\python3.13.exe -m venv .py313-env
           # .py313-env\Scripts\activate
           # pip install build
           # python -m build
           # choco uninstall python313
-          choco install python312
-          C:\ProgramData\chocolatey\bin\python3.12.exe -m venv .py312-env
-          .py312-env\Scripts\activate
-          pip install build
-          python -m build
-          choco uninstall python312
-          C:\ProgramData\chocolatey\bin\python3.11.exe -m venv .py311-env
-          .py311-env\Scripts\activate
-          pip install build pybind11
-          python -m build
-          C:\ProgramData\chocolatey\bin\python3.10.exe -m venv .py310-env
-          .py310-env\Scripts\activate
-          pip install build pybind11
-          python -m build
-          C:\ProgramData\chocolatey\bin\python3.9.exe -m venv .py39-env
-          .py39-env\Scripts\activate
-          pip install build pybind11
-          python -m build
+          # choco install python312
+          # C:\ProgramData\chocolatey\bin\python3.12.exe -m venv .py312-env
+          # .py312-env\Scripts\activate
+          # pip install build
+          # python -m build
+          # choco uninstall python312
+          # C:\ProgramData\chocolatey\bin\python3.11.exe -m venv .py311-env
+          # .py311-env\Scripts\activate
+          # pip install build pybind11
+          # python -m build
+          # C:\ProgramData\chocolatey\bin\python3.10.exe -m venv .py310-env
+          # .py310-env\Scripts\activate
+          # pip install build pybind11
+          # python -m build
+          # C:\ProgramData\chocolatey\bin\python3.9.exe -m venv .py39-env
+          # .py39-env\Scripts\activate
+          # pip install build pybind11
+          # python -m build
 
       - name: Archive compiled artifact
         uses: actions/upload-artifact@v3
