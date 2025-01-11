@@ -1,0 +1,32 @@
+name: Build
+
+run-name: Build pipeline triggered by ${{ github.actor }}
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  Compile-MacOS:
+    runs-on: macos-14
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Build
+        run: |
+          brew install cmake pybind11 python@3.13
+          python3 -m venv .py313-env
+          source .py313-env/bin/activate
+          pip3 install build
+          ./build.sh
+
+      - name: Archive compiled artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos-python-3.13
+          path: |
+            package/dist
