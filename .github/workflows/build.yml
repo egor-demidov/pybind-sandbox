@@ -25,11 +25,27 @@ jobs:
           cmake --install build
           $env:Path += ";C:/Program Files (x86)/pybind11/share/cmake/pybind11/"
           cd ..
-          choco install python313
+          choco install python313 python312 python311 python310 python39
+          cd package
           C:\ProgramData\chocolatey\bin\python3.13.exe -m venv .py313-env
           .py313-env\Scripts\activate
           pip install build pybind11
-          cd package
+          python -m build
+          C:\ProgramData\chocolatey\bin\python3.12.exe -m venv .py313-env
+          .py312-env\Scripts\activate
+          pip install build pybind11
+          python -m build
+          C:\ProgramData\chocolatey\bin\python3.11.exe -m venv .py313-env
+          .py311-env\Scripts\activate
+          pip install build pybind11
+          python -m build
+          C:\ProgramData\chocolatey\bin\python3.10.exe -m venv .py313-env
+          .py310-env\Scripts\activate
+          pip install build pybind11
+          python -m build
+          C:\ProgramData\chocolatey\bin\python3.9.exe -m venv .py313-env
+          .py39-env\Scripts\activate
+          pip install build pybind11
           python -m build
 
       - name: Archive compiled artifact
