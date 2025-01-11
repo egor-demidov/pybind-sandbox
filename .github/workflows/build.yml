@@ -33,7 +33,13 @@ jobs:
           PYPI_KEY: ${{ secrets.PYPI_KEY }}
         run: |
           python3 --version
-          sudo apt install pybind11-dev -y
+          sudo apt install cmake ninja-build -y
+          git clone https://github.com/pybind/pybind11.git
+          cd pybind11
+          cmake -B build -S . -G Ninja
+          cmake --build build
+          sudo cmake --install build
+          cd ..
           python3 -m venv .venv
           source .venv/bin/activate
           pip3 install build
