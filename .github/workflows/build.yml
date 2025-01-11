@@ -21,7 +21,7 @@ jobs:
           choco install python313
           C:\ProgramData\chocolatey\bin\python3.13.exe -m venv .py313-env
           .py313-env\Scripts\activate
-          pip install pybind11
+          pip install build pybind11
           cd package
           python -m build
 
