@@ -18,7 +18,7 @@ jobs:
           submodules: recursive
       - name: Build
         run: |
-          winget install -e --id Python.Python.3.11
+          choco install python312
           # git clone https://github.com/pybind/pybind11.git
           # cd pybind11
           # cmake -B build -S .
