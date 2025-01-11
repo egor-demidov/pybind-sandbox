@@ -22,7 +22,7 @@ jobs:
           C:\ProgramData\chocolatey\bin\python3.13.exe -m venv .py313-env
           ls
           .py313-env\Scripts\activate
-          python3 --version
+          python --version
 
       - name: Archive compiled artifact
         uses: actions/upload-artifact@v3
