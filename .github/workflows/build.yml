@@ -92,7 +92,7 @@ jobs:
           echo "[pypi]" >> ~/.pypirc
           echo "  username: __token__" >> ~/.pypirc
           echo "  password: $PYPI_KEY" >> ~/.pypirc
-          python3 -m twine upload --repository pypi dist/*.whl
+          python3 -m twine upload --repository pypi package/dist/*.whl
 
       # - name: Archive compiled artifact
       #   uses: actions/upload-artifact@v3
