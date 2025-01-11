@@ -33,7 +33,7 @@ jobs:
           PYPI_KEY: ${{ secrets.PYPI_KEY }}
         run: |
           python3 --version
-          apt install pybind11-dev -y
+          sudo apt install pybind11-dev -y
           python3 -m venv .venv
           source .venv/bin/activate
           pip3 install build
