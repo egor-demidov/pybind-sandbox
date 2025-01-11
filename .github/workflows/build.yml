@@ -80,12 +80,19 @@ jobs:
         with:
           submodules: recursive
       - name: Build
+        env:
+          PYPI_KEY: ${{ secrets.PYPI_KEY }}
         run: |
           brew install cmake pybind11
           python3 -m venv .venv
           source .venv/bin/activate
           pip3 install build
           ./build.sh
+          pip3 install twine
+          echo "[pypi]" >> ~/.pypirc
+          echo "  username: __token__" >> ~/.pypirc
+          echo "  password: $PYPI_KEY" >> ~/.pypirc
+          python3 -m twine upload --repository pypi dist/*.whl
 
       # - name: Archive compiled artifact
       #   uses: actions/upload-artifact@v3
