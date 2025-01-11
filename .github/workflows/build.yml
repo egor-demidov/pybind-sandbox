@@ -21,7 +21,7 @@ jobs:
           choco install python313
           C:\ProgramData\chocolatey\bin\python3.13.exe -m venv .py313-env
           ls
-          .py313-env\bin\activate
+          .py313-env\Scripts\activate
           python3 --version
 
       - name: Archive compiled artifact
