@@ -5,7 +5,10 @@
 !*.pyi
 !*.cpp
 !*.h
+!*.in
+!*.sh
 !CMakeLists.txt
 !package/
 !package/pybind_sandbox
+!package/src
 !test/

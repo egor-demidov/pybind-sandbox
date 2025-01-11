@@ -37,7 +37,7 @@ setup(
     author_email="nriemer@illinois.edu",
     description="Python interface to PartMC",
     packages=find_packages(include=["pybind_sandbox"]),
-    ext_modules=[CMakeExtension("_pybind_sandbox", "..")],
+    ext_modules=[CMakeExtension("_pybind_sandbox", "src")],
     cmdclass={"build_ext": CMakeBuild},
     zip_safe=False,
     python_requires=">=3.7",
