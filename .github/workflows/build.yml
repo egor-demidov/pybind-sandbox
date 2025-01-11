@@ -49,8 +49,27 @@ jobs:
       #     path: |
       #       package/dist
 
-  Compile-MacOS:
+  Compile-MacOS-14:
     runs-on: macos-14
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Build
+        run: |
+          brew install cmake pybind11
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip3 install build
+          ./build.sh
+
+  Compile-MacOS-13:
+    runs-on: macos-13
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
