@@ -19,6 +19,9 @@ jobs:
       - name: Build
         run: |
           choco install python312
+          refreshenv
+          C:\ProgramData\chocolatey\bin\python3.12.exe -m venv .py312-env
+          python --version
           # git clone https://github.com/pybind/pybind11.git
           # cd pybind11
           # cmake -B build -S .
