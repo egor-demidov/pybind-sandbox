@@ -91,10 +91,7 @@ jobs:
          pip install build
          python -m build
          pip install twine
-         echo "[pypi]" >> ~/.pypirc
-         echo "  username: __token__" >> ~/.pypirc
-         echo "  password: $PYPI_KEY" >> ~/.pypirc
-         python -m twine upload --repository pypi -u __token__ -p "${PYPI_KEY}" dist\*.whl
+         python -m twine upload --repository pypi -u __token__ -p "${env:PYPI_KEY}" dist\*.whl
 
   # Compile-MacOS-14:
   #   runs-on: macos-14
