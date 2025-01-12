@@ -33,6 +33,7 @@ class CMakeBuild(build_ext):
         subprocess.check_call(["cmake", "--build", "."], cwd=build_temp)
 
 setup(
+    version="0.0.1",
     name="pybind_sandbox",
     author="PyPartMC team (see https://github.com/open-atmos/PyPartMC/graphs/contributors)",
     author_email="nriemer@illinois.edu",
